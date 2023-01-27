@@ -1,8 +1,6 @@
 package fr.iutna.example;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashMap;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -14,13 +12,13 @@ public class WebGrep {
 	//validURL : liste valide des url (contenant les matches)
 	//voir blockedQueue ==> ProducerConsumer.
 
+	public static HashMap<Exception, AtomicInteger> errors = new HashMap<>();
+
 	public static void main(String[] args) {
 		// Initialize the program using the options given in argument
-		if(args.length == 0) Tools.initialize("-cT --threads=1000 Nantes https://fr.wikipedia.org/wiki/Nantes");
+		//if(args.length == 0) Tools.initialize("-cT --threads=100 Nantes https://fr.wikipedia.org/wiki/Nantes");
+		if(args.length == 0) Tools.initialize("-cTO --threads=100 Nantes https_/fr.wikipedia.org/wiki/Nantes");
 		else Tools.initialize(args);
-
-		System.err.println("You must search recursively!");
-		System.err.println("You must parallelize the application between " + Tools.numberThreads() + " threads!");
 
 		//Blocking queue
 		BlockingQueue<String> toExploreURLs = new LinkedBlockingQueue<>(Tools.startingURL());
@@ -32,12 +30,6 @@ public class WebGrep {
 			new Thread(new URLExplorer(toExploreURLs, exploredURLs, validURLs)).start();
 		}
 
-		/*
-		ExecutorService es = Executors.newFixedThreadPool(Tools.numberThreads());
-
-		Future<?> f = es.submit(new URLExplorer(toExploreURL, exploredURL, validURL));
-		*/
-		//while true, clear la console puis affiche le nombre d'url explorées
 		while(true) {
 			try {
 				Thread.sleep(1000);
@@ -51,7 +43,6 @@ public class WebGrep {
 			System.out.println("validURL : " + validURLs.size());
 			System.out.println();
 		}
-
 	}
 
 
