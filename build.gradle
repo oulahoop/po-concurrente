@@ -1,13 +1,14 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group 'fr.iutna'
+version '1.0'
 
 application {
-    mainClassName = 'fr.iutna.example.WebGrep'
+    mainClassName = 'fr.iutna.Application'
 }
 
 repositories {
@@ -19,8 +20,16 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     //
     implementation 'org.jsoup:jsoup:1.11.1'
+
 }
 
 test {
     useJUnitPlatform()
+}
+
+shadowJar {
+    // Nom du jar généré
+    archiveBaseName.set("fatJarProjetConcurrent")
+    // Inclure les dépendances dans le jar généré
+    mergeServiceFiles()
 }
