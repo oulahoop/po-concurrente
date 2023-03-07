@@ -1,10 +1,10 @@
 # Projet Concurrent
 
-##Auteur
+## Auteur
 
-|Maël Caubère : mael.caubere@etu.univ-nantes.fr
+**Maël Caubère** : mael.caubere@etu.univ-nantes.fr
 
-##Informations
+## Informations
 
 J'ai créé 2 solutions pour la problématique : 
 Une utilisant un classe SharedSet créé pour avoir Set de Java avec un lock afin d'être Thread Safe.
@@ -12,7 +12,7 @@ Une utilisant ConcurrentHashMap de Java.
 
 Dans le cadre où avoir 2 solutions n'est pas autorisé, la solution que je pense la plus optimisé au problème est la solution2 (ConcurrentHashMap).
 
-##Lancement du projet
+## Lancement du projet
 
 Il y a plusieurs façon de lancer mon projet : 
 
