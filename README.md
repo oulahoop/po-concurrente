@@ -7,8 +7,11 @@
 ## Informations
 
 J'ai créé 2 solutions pour la problématique : 
-Une utilisant un classe SharedSet créé pour avoir Set de Java avec un lock afin d'être Thread Safe.
-Une utilisant ConcurrentHashMap de Java.
+
+- Une utilisant un classe SharedSet créé pour avoir Set de Java avec un lock afin d'être Thread Safe.
+- Une utilisant ConcurrentHashMap de Java.
+
+Pour plus d'information sur ces 2 soltuions, lisez le fichier [petit_rapport.pdf]()
 
 Dans le cadre où avoir 2 solutions n'est pas autorisé, la solution que je pense la plus optimisé au problème est la solution2 (ConcurrentHashMap).
 
