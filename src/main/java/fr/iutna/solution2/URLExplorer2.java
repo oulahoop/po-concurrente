@@ -10,9 +10,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class URLExplorer2 implements Runnable {
 
-    //Nombre d'URL que le thread va prendre lorsqu'il a fini d'explorer les URL qu'il a
-    private static final int SIZE_CURRENT_TO_EXPLORE = 10;
-
     //Liste des urls à explorer par le thread
     private final List<String> currentToExplore = new ArrayList<>();
 
@@ -56,12 +53,12 @@ public class URLExplorer2 implements Runnable {
      * Récupère une partie des urls à explorer dans la liste partagée toExploreURLs
      */
     private void getExplorer() {
-        //récupère les SIZE_CURRENT_TO_EXPLORE premières urls de la liste partagée toExploreURLs
-        toExploreURLs.drainTo(currentToExplore, SIZE_CURRENT_TO_EXPLORE);
+        //récupère 1/5 premières urls de la liste partagée toExploreURLs
+        toExploreURLs.drainTo(currentToExplore, (toExploreURLs.size()/5) + 1);
         //ajoute les urls de la liste partagée toExploreURLs dans la liste des urls à explorer du thread
         //Permet de ne pas explorer deux fois la même url
         if(currentToExplore.size() > 0) {
-            synchronized (currentToExplore) {
+            synchronized (exploredURLs) {
                 currentToExplore.forEach(url -> exploredURLs.putIfAbsent(url, false));
             }
         }

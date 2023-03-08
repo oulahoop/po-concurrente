@@ -17,9 +17,6 @@ public class URLExplorer implements Runnable {
     //Liste des urls explorées partagée par tous les threads
     private final SharedSet validURLs;
 
-    //Nombre d'URL que le thread va prendre lorsqu'il a fini d'explorer les URL qu'il a
-    private static final int SIZE_CURRENT_TO_EXPLORE = 1;
-
     //Liste des urls à explorer par le thread
     private final List<String> currentToExplore = new ArrayList<>();
 
@@ -50,8 +47,8 @@ public class URLExplorer implements Runnable {
      * Récupère une partie des urls à explorer dans la liste partagée toExploreURLs
      */
     private void getExplorer() {
-        //récupère les SIZE_CURRENT_TO_EXPLORE premières urls de la liste partagée toExploreURLs
-        toExploreURLs.drainTo(currentToExplore, SIZE_CURRENT_TO_EXPLORE);
+        //récupère 1/5 premières urls de la liste partagée toExploreURLs
+        toExploreURLs.drainTo(currentToExplore, (toExploreURLs.size()/5) + 1);
 
         //Ajoute tous les URLs à explorer du Thread dans la liste des URLs explorées (pour éviter de les explorer plusieurs fois)
         if(currentToExplore.size() > 0) {

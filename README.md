@@ -34,7 +34,7 @@ avec gradle à la racine du projet :
 ``` 
 puis :
 ```bash
-java -jar ./build/libs/fatJarProjetConcurrent-1.0-all.jar 1|2
+java -jar ./build/libs/fatJarProjetConcurrent-1.0-all.jar 1|2 *args
 ```
 (1|2 est un choix entre la solution1 ou la solution2)
-
+(*args sont les arguements pour lancer Tools, si aucun précisé, ceux par défaut seront `-cT -threads=100 Nantes https://fr.wikipedia.org/wiki/Nantes`)

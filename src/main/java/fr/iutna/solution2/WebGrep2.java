@@ -25,7 +25,7 @@ public class WebGrep2 implements Runnable{
 
 		// Initialize the program using the options given in argument
 		if(args.length == 0) Tools.initialize("-cT --threads=100 Nantes https://fr.wikipedia.org/wiki/Nantes");
-		//if(args.length == 0) Tools.initialize("-cTO --threads=100 Nantes https_/fr.wikipedia.org/wiki/Nantes");
+		//if(args.length == 0) Tools.initialize("-cTO --threads=100 Nantes https://fr.wikipedia.org/wiki/Nantes");
 		else Tools.initialize(args);
 
 		//Blocking queue pour les urls à explorer
